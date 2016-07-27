@@ -71,10 +71,25 @@
                 </div>
             </div>
 
+            <div id="links">
+                <table class="table">
+                    <thead>
+                        <th>Link</th>
+                        <th>Direct to</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="link in linksList">
+                            <td>{{link.link}}</td>
+                            <td>{{link.direct}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
         <script src="controllers/ApplicationController.js"></script>
+        <script src="controllers/actions.js"></script>
     </body>
 </html>

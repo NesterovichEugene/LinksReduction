@@ -1,36 +1,43 @@
 var crypto = require('crypto');
 var User = require('../models/User').User;
-
+var app = require('../server');
 // User API
 
-exports.createUser = function(userData){
+app.post('/signup', function(req, res, next){
+    var userData = req.body;
+
     var user = new User({
         username: userData.name,
         password: hash(userData.password)
     });
     user.save(function (err, user) {
-        if(err) return console.error(err);
-        console.log(user._id);
-        if(user) return user;
+        if(err) {
+            console.error(err);
+            res.json('dublicate name')
+        }
+        req.session.user = user._id;
+        res.json('user created');
     })
-};
+});
 
 exports.getUser = function(id) {
     return User.findOne(id)
 };
 
-exports.checkUser = function(userData) {
-    return User
-        .findOne({name: userData.name})
-        .then(function(doc){
-            if ( doc.password == hash(userData.password) ){
-                console.log("User password is ok");
-                return Promise.resolve(doc)
-            } else {
-                return Promise.reject("Error wrong")
-            }
-        })
-};
+app.post('/login', function(req, res, next) {
+    if (req.session.user) return res.redirect('/');
+
+    var userData = req.body;
+    User.findOne({username: userData.name}, function(err, user){
+        if(err) return console.error(err);
+        if ( user.password == hash(userData.password) ){
+            req.session.user = {id: user._id};
+            console.log("User password is ok");
+        } else {
+            console.log('Pass wrong');
+        }
+    })
+});
 
 function hash(text) {
     return crypto.createHash('sha1')

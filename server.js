@@ -1,5 +1,5 @@
 var express = require('express');
-var app = express();
+var app = module.exports  = express();
 var mongoose = require("mongoose");
 var cookieParser = require("cookie-parser");
 var session = require('express-session');
@@ -18,37 +18,14 @@ app.use(session({
     saveUninitialized: false,
     // Место хранения можно выбрать из множества вариантов, это и БД и файлы и Memcached.
     store: new MongoStore({
-        url: 'mongodb://localhost/sessions'
+        url: 'mongodb://localhost/links-reduction'
     })
 }));
 
 var UserController = require('./controllers/UserController');
 
 /* Создание пользователя */
-app.post('/login', function(req, res, next) {
-    if (req.session.user) return res.redirect('/');
 
-    api.checkUser(req.body)
-        .then(function(user){
-            if(user){
-                req.session.user = {id: user._id, name: user.name}
-                res.redirect('/')
-            } else {
-                return next(error)
-            }
-        })
-        .catch(function(error){
-            return next(error)
-        })
-
-});
-
-app.post('/signup', function(req, res, next){
-    var user = UserController.createUser(req.body);
-    console.log(user);
-    if(user) res.json('user created');
-    else res.json('duplicate name');
-});
 
 app.post('/logout', function(req, res, next) {
     if (req.session.user) {
@@ -58,3 +35,4 @@ app.post('/logout', function(req, res, next) {
 });
 
 app.listen(3000);
+
