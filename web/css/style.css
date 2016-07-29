@@ -72,6 +72,17 @@ body{
     text-shadow: 1px 1px 0 orange, -1px -1px 0 orange, 1px -1px 0 orange, -1px 1px 0 orange;
 }
 
+#reduce{
+    text-align: center;
+    margin: 30px auto 50px;
+    width: 500px;
+}
+
+#reduce h2{
+    color: white;
+    text-shadow: 2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black;
+    font-weight: 700;
+}
 
 /*custom scrollbar webkit only*/
 ::-webkit-scrollbar { width: 12px; }

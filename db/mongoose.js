@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
-// mongoose.connect("mongodb://localhost/links-reduction");
-mongoose.connect("mongodb://localhost/test");
+ mongoose.connect("mongodb://localhost/links-reduction");
+//mongoose.connect("mongodb://localhost/test");
 
 module.exports = mongoose;
 

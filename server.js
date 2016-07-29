@@ -3,6 +3,7 @@ var app = module.exports  = express();
 var mongoose = require("mongoose");
 var cookieParser = require("cookie-parser");
 var session = require('express-session');
+var fs = require('fs');
 var MongoStore = require('connect-mongo')(session);
 var mongojs = require('mongojs');
 var db = mongojs('contactlist', ['contactlist']);
@@ -24,13 +25,21 @@ app.use(session({
 
 var UserController = require('./controllers/UserController');
 
-/* Создание пользователя */
+app.get('/', function(req, res){
+    if (req.session.user){
+        res.redirect('/user');
+    }
+    else{
+        res.sendFile(__dirname+'/views/index.html');
+    }
+});
 
-
-app.post('/logout', function(req, res, next) {
-    if (req.session.user) {
-        delete req.session.user;
-        res.redirect('/')
+app.get('/user', function(req, res){
+    if (req.session.user){
+        res.sendFile(__dirname+'/views/user.html');
+    }
+    else{
+        res.redirect('/');
     }
 });
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <meta charset="UTF-8">
+
+        <!--JQuery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="/css/style.css">
+
+        <title>Links Reduction</title>
+    </head>
+    <body>
+
+        <div class="container" ng-controller="UserController">
+            <div class="navbar">
+                <h3>LINKS REDUCTION</h3>
+                <div class="navbar-controls">
+                    <a ng-click="logout()">LOG OUT</a>
+                </div>
+            </div>
+
+            <div id="reduce">
+                <h2>Reduce Link</h2>
+                <div class="form-group">
+                    <textarea class="form-control" id="description-input" rows="3" placeholder="Description"></textarea>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Input your link">
+                    <span class="input-group-btn">
+                        <button class="btn btn-warning" type="button">REDUCE</button>
+                    </span>
+                </div>
+            </div>
+
+
+            <div id="links">
+                <table class="table">
+                    <thead>
+                        <th>Link</th>
+                        <th>Direct to</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="link in linksList">
+                            <td>{{link.link}}</td>
+                            <td>{{link.direct}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="/js/UserController.js"></script>
+    </body>
+</html>

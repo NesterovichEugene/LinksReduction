@@ -32,11 +32,18 @@ app.post('/login', function(req, res, next) {
         if(err) return console.error(err);
         if ( user.password == hash(userData.password) ){
             req.session.user = {id: user._id};
-            console.log("User password is ok");
+            res.redirect('/user');
         } else {
             console.log('Pass wrong');
         }
     })
+});
+
+app.get('/logout', function(req, res, next) {
+    if (req.session.user) {
+        delete req.session.user;
+        res.redirect('/')
+    }
 });
 
 function hash(text) {
