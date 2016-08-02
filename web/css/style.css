@@ -72,6 +72,16 @@ body{
     text-shadow: 1px 1px 0 orange, -1px -1px 0 orange, 1px -1px 0 orange, -1px 1px 0 orange;
 }
 
+#links a{
+    color: white;
+}
+
+#links a:hover{
+    text-decoration: none;
+    color: orangered;
+    cursor: pointer;
+}
+
 #reduce{
     margin: 30px auto 50px;
     width: 500px;

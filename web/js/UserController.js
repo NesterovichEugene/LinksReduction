@@ -7,8 +7,25 @@ myApp.controller('UserController', ['$scope', '$http', function($scope, $http){
         description: "",
         tag: []
     };
-
+    $scope.tags = [];
     $scope.responseLink = null;
+    $scope.template = "templates/reduce.html";
+
+    $scope.changeTemplate = function(name){
+        switch (name){
+            case 'all':
+                refreshAll();
+                $scope.template = "templates/links.html";
+                break;
+            case 'reduce':
+                $scope.template = "templates/reduce.html";
+                break;
+            case 'my':
+                refreshMy();
+                $scope.template = "templates/links.html";
+                break;
+        }
+    };
 
     $scope.logout = function(){
         $http.get('/logout').success(function(response){
@@ -16,12 +33,8 @@ myApp.controller('UserController', ['$scope', '$http', function($scope, $http){
         })
     };
 
-    $scope.tags = [];
-
-
     $scope.addTag = function () {
-        $scope.tags.push({});
-        console.log($scope.user);
+        if($scope.tags.length < 6) $scope.tags.push({});
     };
 
     $scope.removeTag = function(item){
@@ -31,9 +44,33 @@ myApp.controller('UserController', ['$scope', '$http', function($scope, $http){
     };
 
     $scope.reduce = function(){
+        if($scope.link.direct.indexOf('http') === -1){
+            $scope.link.direct = 'http://'+$scope.link.direct
+        }
         $http.post('/createLink', $scope.link).success(function(response){
             $scope.responseLink = response;
-            console.log($scope.responseLink.link);
         });
-    }
+    };
+
+    $scope.followLink = function(){
+        window.open($scope.responseLink.link);
+    };
+
+    var refreshAll = function() {
+        $http.get('/linkslist').success(function (response) {
+            $scope.linksList = response;
+        });
+    };
+
+    var refreshMy = function() {
+        $http.get('/mylinkslist').success(function (response) {
+            $scope.linksList = response;
+        });
+    };
+
+    $scope.info = function(link){
+        $http.get('/view?id='+link._id).success(function (response) {
+        });
+    };
+
 }]);

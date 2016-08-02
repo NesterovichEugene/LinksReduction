@@ -5,14 +5,18 @@ var app = require('../server');
 app.post('/createLink', function(req, res, next){
     var linkData = req.body;
 
+
     var link = new Link({
-        link: 'http://localhost:3000/'+randomString(),
+        link: 'http://localhost:3000/go?'+randomString(),
         direct: linkData.direct,
         description: linkData.description,
         created_by: req.session.user.id,
         follows: 0
     });
     link.save(function (err, link) {
+        if(err){
+            console.error(err);
+        }
         if(err && err.code === 11000) {
             var field = err.message.split('_1')[1];
             field = field.split(' dup key: ')[1];
@@ -26,8 +30,50 @@ app.post('/createLink', function(req, res, next){
             })
 
         }
-        else {
+        else{
             res.json(link);
+        }
+    })
+});
+
+app.get('/go', function(req, res){
+    var link = 'http://localhost:3000'+req.url;
+    Link.findOne({link: link}, function(err, link){
+        if(err){
+            res.json("Not found");
+        }
+        else{
+            link.follows ++;
+            link.save(function(err, link){
+                if(err){
+                    console.error(err);
+                }
+                else{
+                    res.redirect(link.direct);
+                }
+            });
+        }
+    });
+});
+
+app.get('/linkslist', function(req, res){
+   Link.find({}, function(err, data){
+       if(err){
+           console.log(err)
+       }
+       else{
+           res.json(data)
+       }
+   })
+});
+
+app.get('/mylinkslist', function(req, res){
+    Link.find({created_by: req.session.user.id}, function(err, data){
+        if(err){
+            console.log(err)
+        }
+        else{
+            res.json(data)
         }
     })
 });

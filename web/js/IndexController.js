@@ -2,6 +2,8 @@ var myApp = angular.module('myApp', []);
 
 myApp.controller('IndexController', ['$scope', '$http', function($scope, $http){
 
+    $scope.template = "templates/all.html";
+
     $scope.login = function(){
         $http.post('/login', $scope.user).success(function(response){
             location.reload();

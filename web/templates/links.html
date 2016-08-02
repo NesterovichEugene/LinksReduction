@@ -1,0 +1,16 @@
+<div id="links">
+    <table class="table">
+        <thead>
+            <th>Link</th>
+            <th>Direct to</th>
+            <th>Link info</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="link in linksList">
+                <td><a href="{{link.link}}">{{link.link}}</a></td>
+                <td><a href="{{link.direct}}">{{link.direct}}</a></td>
+                <td style="text-align: center"><a href="/view?id={{link._id}}"><span class="glyphicon glyphicon-info-sign"></span></a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

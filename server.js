@@ -3,7 +3,6 @@ var app = module.exports  = express();
 var mongoose = require("mongoose");
 var cookieParser = require("cookie-parser");
 var session = require('express-session');
-var fs = require('fs');
 var MongoStore = require('connect-mongo')(session);
 var mongojs = require('mongojs');
 var db = mongojs('contactlist', ['contactlist']);
@@ -42,6 +41,10 @@ app.get('/user', function(req, res){
     else{
         res.redirect('/');
     }
+});
+
+app.get('/view', function(req, res){
+    res.sendFile(__dirname+'/views/view.html');
 });
 
 app.listen(3000);

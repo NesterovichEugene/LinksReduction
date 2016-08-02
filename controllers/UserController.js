@@ -15,7 +15,7 @@ app.post('/signup', function(req, res, next){
             console.error(err);
             res.json('dublicate name')
         }
-        req.session.user = user._id;
+        req.session.user = {id: user._id};
         res.json('user created');
     })
 });

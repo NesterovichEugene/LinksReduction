@@ -71,20 +71,7 @@
                 </div>
             </div>
 
-            <div id="links">
-                <table class="table">
-                    <thead>
-                        <th>Link</th>
-                        <th>Direct to</th>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="link in linksList">
-                            <td>{{link.link}}</td>
-                            <td>{{link.direct}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <div ng-include="template">
 
         </div>
 
