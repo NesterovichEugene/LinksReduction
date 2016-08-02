@@ -24,6 +24,7 @@ app.use(session({
 }));
 
 var UserController = require('./controllers/UserController');
+var LinkController = require('./controllers/LinkController');
 
 app.get('/', function(req, res){
     if (req.session.user){

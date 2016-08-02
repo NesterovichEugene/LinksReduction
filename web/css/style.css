@@ -60,7 +60,7 @@ body{
 
 
 #links{
-    height: calc(100vh - 90px);
+    max-height: calc(100vh - 90px);
     background: rgba(0,0,0, 0.2);
     border-radius: 5px;
     color: white;
@@ -73,15 +73,33 @@ body{
 }
 
 #reduce{
-    text-align: center;
     margin: 30px auto 50px;
     width: 500px;
+    font-weight: 700;
 }
 
-#reduce h2{
+#reduce h2,
+#reduce h4 {
+    text-align: center;
     color: white;
     text-shadow: 2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black;
     font-weight: 700;
+}
+
+#reduce h4{
+    display: inline;
+}
+
+#reduce .btn{
+    font-weight: 700;
+}
+
+#reduce .tag{
+    width: 200px;
+}
+
+#reduce .result{
+    margin-top: 50px;
 }
 
 /*custom scrollbar webkit only*/
