@@ -43,9 +43,5 @@ app.get('/user', function(req, res){
     }
 });
 
-app.get('/view', function(req, res){
-    res.sendFile(__dirname+'/views/view.html');
-});
-
 app.listen(3000);
 

@@ -1,81 +1,180 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
-    <head>
-        <meta charset="UTF-8">
 
-        <!--JQuery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<head>
 
-        <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="/css/style.css">
+    <title>Links Reduction</title>
 
-        <title>Links Reduction</title>
-    </head>
-    <body>
-        <div class="container" ng-controller="IndexController">
-            <div class="navbar">
-                <h3>LINKS REDUCTION</h3>
-                <div class="navbar-controls">
-                    <a data-toggle="modal" data-target="#loginModal">LOG IN</a>
-                    <a data-toggle="modal" data-target="#registrationModal">SIGN UP</a>
-                </div>
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+</head>
+
+<body id="page-top" class="index" ng-controller="IndexController">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">Links Reduction</a>
             </div>
 
-            <!--Login modal-->
-            <div class="modal fade" id="loginModal" role="dialog">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">LOG IN</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <input type="text" id="name_l" class="form-control" ng-model="user.name" placeholder="NAME">
-                            </div>
-                            <input type="password" id="password_l" class="form-control" ng-model="user.password" placeholder="PASSWORD">
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-warning" ng-click="login()">LOG IN</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
-                        </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#links">Links</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a style="cursor: pointer" data-toggle="modal" data-target="#loginModal">Log In</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a style="cursor: pointer" data-toggle="modal" data-target="#registrationModal">Sign In</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!--Login modal-->
+    <div class="modal fade" id="loginModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content user-modal">
+                <div class="modal-header">
+                    <h4 class="modal-title">LOG IN</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" id="name_l" ng-model="user.name" placeholder="NAME" required>
                     </div>
-
+                    <input type="password" id="password_l" ng-model="user.password" placeholder="PASSWORD" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" ng-click="login()">LOG IN</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">CLOSE</button>
                 </div>
             </div>
-
-            <!--Registration modal-->
-            <div class="modal fade" id="registrationModal" role="dialog">
-                <div class="modal-dialog">
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">SIGN UP</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <input type="text" id="name_s" class="form-control" ng-model="user.name" placeholder="NAME">
-                            </div>
-                            <input type="password" id="password_s" class="form-control" ng-model="user.password" placeholder="PASSWORD">
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-warning" ng-click="createUser()">SIGN UP</button>
-                            <button type="button" class="btn btn-default close-modal" data-dismiss="modal">CLOSE</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div ng-include="template">
 
         </div>
+    </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-        <script src="/js/IndexController.js"></script>
-    </body>
+    <!--Registration modal-->
+    <div class="modal fade" id="registrationModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content user-modal">
+                <div class="modal-header">
+                    <h4 class="modal-title">SIGN UP</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="text" id="name_s" ng-model="user.name" placeholder="NAME" required>
+                    </div>
+                    <input type="password" id="password_s" ng-model="user.password" placeholder="PASSWORD" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" ng-click="createUser()">SIGN UP</button>
+                    <button type="button" class="btn btn-default close-modal" data-dismiss="modal">CLOSE</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="img/scissors.png" alt="">
+                    <div class="intro-text">
+                        <span class="name">Links Reduction</span>
+                        <hr class="star-light">
+                        <span class="skills">Short Links - Tiny URLs - Everywhere</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div ng-include="template"></div>
+
+    <!-- About Section -->
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>About</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>Share your links across all your marketing channels-including email, SMS, display, social and more-and collect key insights into each channel’s performance and audience. </p>
+                </div>
+                <div class="col-lg-4">
+                    <p>Track individual link analytics, gather audience intelligence and measure campaign performance in one location.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--Angular-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="/js/IndexController.js"></script>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+    <script>
+        $(document).ready(function(){
+            // Add smooth scrolling to all links
+            $("a").on('click', function(event) {
+
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function(){
+
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+    </script>
+
 </html>

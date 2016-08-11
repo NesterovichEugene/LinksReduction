@@ -1,16 +1,65 @@
-<div id="links">
-    <table class="table">
-        <thead>
-            <th>Link</th>
-            <th>Direct to</th>
-            <th>Link info</th>
-        </thead>
-        <tbody>
-            <tr ng-repeat="link in linksList">
-                <td><a href="{{link.link}}">{{link.link}}</a></td>
-                <td><a href="{{link.direct}}">{{link.direct}}</a></td>
-                <td style="text-align: center"><a href="/view?id={{link._id}}"><span class="glyphicon glyphicon-info-sign"></span></a></td>
-            </tr>
-        </tbody>
-    </table>
+<!-- links Grid Section -->
+<section id="links">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Links</h2>
+                <hr class="star-primary">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 links-item" ng-repeat="link in linksList">
+            <a href="#linksModal" class="links-link" data-toggle="modal">
+                <div class="caption" ng-click="info(link)">
+                    <div class="caption-content">
+                        <i class="fa fa-search-plus fa-3x"></i>
+                    </div>
+                </div>
+                <h5>Link: </h5><label>{{link.link}}</label><br>
+                <h5>Direct: </h5><label style="word-wrap: break-word;">{{link.direct}}</label>
+            </a>
+        </div>
+    </div>
+    </div>
+</section>
+
+<!-- links Modals -->
+<div class="links-modal modal fade" id="linksModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <h2>Link Info</h2>
+                        <hr class="star-primary">
+                        <p>{{link.link}}</p>
+                        <p>{{link.direct}}</p>
+                        <p>{{link.description}}</p>
+                        <p>Follows: {{link.follows}}</p>
+                        <ul class="list-inline item-details">
+                            <li>Tags: </li>
+                            <li>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <input type="text" disabled>
+                            </li>
+                            <li>
+                                <input type="text" disabled>
+                            </li>
+                        </ul>
+                        <button class="btn btn-info" ng-if="link.created_by == user._id" ng-click="edit = true">Edit</button>
+                        <button class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

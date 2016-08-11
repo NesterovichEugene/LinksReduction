@@ -2,12 +2,14 @@ var myApp = angular.module('myApp', []);
 
 myApp.controller('UserController', ['$scope', '$http', function($scope, $http){
 
+    $scope.user = {};
     $scope.link={
         direct: "",
         description: "",
         tag: []
     };
     $scope.tags = [];
+    $scope.edit = false;
     $scope.responseLink = null;
     $scope.template = "templates/reduce.html";
 
@@ -26,6 +28,11 @@ myApp.controller('UserController', ['$scope', '$http', function($scope, $http){
                 break;
         }
     };
+
+        $http.get('/getUser').success(function (response) {
+            $scope.user = response;
+        });
+
 
     $scope.logout = function(){
         $http.get('/logout').success(function(response){
@@ -69,8 +76,12 @@ myApp.controller('UserController', ['$scope', '$http', function($scope, $http){
     };
 
     $scope.info = function(link){
-        $http.get('/view?id='+link._id).success(function (response) {
-        });
+        $scope.template = "templates/view.html";
+        $scope.link = link;
+    };
+
+    $scope.back = function(){
+        $scope.template = "templates/links.html";
     };
 
 }]);

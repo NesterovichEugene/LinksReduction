@@ -11,6 +11,7 @@
     </div>
     <div>
         <h4 class="tags">Tags:</h4>
+        <button class="btn btn-xs btn-primary add-tag" ng-click="addTag()" ng-if="tags.length<6"><span class="glyphicon glyphicon-plus"></span>ADD</button>
         <div ng-repeat="tag in tags">
             <div class="input-group tag">
                 <input type="text" class="form-control input-sm" placeholder="Input your tag" ng-model="link.tag[$index]">
@@ -19,7 +20,7 @@
                 </span>
             </div>
         </div>
-        <button class="btn btn-xs btn-primary add-tag" ng-click="addTag()" ng-if="tags.length<6"><span class="glyphicon glyphicon-plus"></span>ADD</button>
+
     </div>
     <div>
         <div class="input-group form-group result ng-hide" ng-show="responseLink">

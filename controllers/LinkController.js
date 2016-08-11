@@ -78,6 +78,10 @@ app.get('/mylinkslist', function(req, res){
     })
 });
 
+app.get('/linkInfo', function(req, res){
+
+});
+
 function getLink(direct){
     var query = Link.findOne({direct: direct});
     return query;

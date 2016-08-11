@@ -2,7 +2,7 @@ var myApp = angular.module('myApp', []);
 
 myApp.controller('IndexController', ['$scope', '$http', function($scope, $http){
 
-    $scope.template = "templates/all.html";
+    $scope.template = "templates/links.html";
 
     $scope.login = function(){
         $http.post('/login', $scope.user).success(function(response){
@@ -16,42 +16,11 @@ myApp.controller('IndexController', ['$scope', '$http', function($scope, $http){
         });
     };
 
+    $scope.info = function(link){
+        $scope.link = link;
+    };
 
-    $scope.linksList = [
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'},
-        {link: 'lol.com', direct: 'google.com'},
-        {link: 'lol.com/qw', direct: 'fb.com'}
-    ];
-
+    $http.get('/linkslist').success(function (response) {
+        $scope.linksList = response;
+    });
 }]);

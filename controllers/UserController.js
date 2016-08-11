@@ -1,6 +1,7 @@
 var crypto = require('crypto');
 var User = require('../models/User').User;
 var app = require('../server');
+var mongojs = require('mongojs');
 // User API
 
 app.post('/signup', function(req, res, next){
@@ -20,9 +21,11 @@ app.post('/signup', function(req, res, next){
     })
 });
 
-exports.getUser = function(id) {
-    return User.findOne(id)
-};
+app.get('/getUser', function(req, res) {
+    User.findOne({_id:  mongojs.ObjectId(req.session.user.id)}, function(err, user){
+        res.json(user);
+    });
+});
 
 app.post('/login', function(req, res, next) {
     if (req.session.user) return res.redirect('/');
