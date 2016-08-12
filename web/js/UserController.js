@@ -8,7 +8,7 @@ myApp.controller('UserController', ['$scope', '$http', function($scope, $http){
         description: "",
         tag: []
     };
-    $scope.tags = [];
+    $scope.tags = new Array(3);
     $scope.edit = false;
     $scope.responseLink = null;
     $scope.template = "templates/reduce.html";
@@ -40,16 +40,6 @@ myApp.controller('UserController', ['$scope', '$http', function($scope, $http){
         })
     };
 
-    $scope.addTag = function () {
-        if($scope.tags.length < 6) $scope.tags.push({});
-    };
-
-    $scope.removeTag = function(item){
-        var index = $scope.tags.indexOf(item);
-        $scope.link.tag.splice(index, 1);
-        $scope.tags.splice(index, 1);
-    };
-
     $scope.reduce = function(){
         if($scope.link.direct.indexOf('http') === -1){
             $scope.link.direct = 'http://'+$scope.link.direct
@@ -76,12 +66,7 @@ myApp.controller('UserController', ['$scope', '$http', function($scope, $http){
     };
 
     $scope.info = function(link){
-        $scope.template = "templates/view.html";
         $scope.link = link;
-    };
-
-    $scope.back = function(){
-        $scope.template = "templates/links.html";
     };
 
 }]);

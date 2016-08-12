@@ -198,7 +198,8 @@ section.success {
   }
 }
 #links{
-    height: 700px;
+    height: 100vh;
+    width: 100vw;
     overflow: auto;
 }
 
@@ -566,4 +567,25 @@ fieldset[disabled] .btn-success.active {
 
 .user-modal input:invalid{
     border-bottom: solid 1px red;
+}
+
+#reduce .container{
+    padding-top: 150px;
+    padding-left: 200px;
+    padding-right: 200px;
+    min-height: 100vh;
+}
+
+#reduce .tag{
+    border: none;
+    background: #18BC9C;
+    border-bottom: solid 1px white;
+    margin: 3px 10px 0;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#reduce .tag:focus,
+#reduce .tag.focus {
+    border-bottom: solid 1px #2C3E50;
 }
