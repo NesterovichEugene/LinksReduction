@@ -47,9 +47,7 @@ myApp.controller('UserController', ['$scope', '$http', function($scope, $http){
         $http.post('/createLink', $scope.link).success(function(response){
             $scope.responseLink = response;
         });
-        $http.post('/createTag', $scope.link).success(function(response){
-            console.log(response);
-        })
+        $http.post('/createTag', $scope.link);
     };
 
     $scope.followLink = function(link){
@@ -94,6 +92,12 @@ myApp.controller('UserController', ['$scope', '$http', function($scope, $http){
         if(!$scope.edit){
             $scope.edit = true;
         }
+    };
+
+    $scope.saveLink = function(link, tags){
+        $http.post('/updateLink', link);
+        $http.post('/updateTags', tags);
+        $scope.edit = false;
     }
 
 }]);

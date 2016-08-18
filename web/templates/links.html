@@ -29,12 +29,6 @@
 <!-- links Modals -->
 <div class="links-modal modal fade" id="linksModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-content">
-        <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-                <div class="rl">
-                </div>
-            </div>
-        </div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
@@ -46,7 +40,8 @@
                         <h3>Direct</h3>
                         <p>{{link.direct}}</p>
                         <h3>Description</h3>
-                        <p>{{link.description}}</p>
+                        <p ng-if="!edit">{{link.description}}</p>
+                        <textarea class="form-control" rows="3" ng-model="link.description" ng-if="edit"></textarea>
                         <h3>Follows: {{link.follows}}</h3>
                         <ul class="list-inline item-details">
                             <li>Tags: </li>
@@ -64,7 +59,8 @@
                             </li>
                         </ul>
                         <button class="btn btn-primary" ng-click="followLink(link)">Follow link</button>
-                        <button class="btn btn-success" ng-if="link.created_by == user._id" ng-click="editLink()">Edit</button>
+                        <button class="btn btn-success" ng-if="link.created_by == user._id && !edit" ng-click="editLink()">Edit</button>
+                        <button class="btn btn-danger" ng-if="edit" ng-click="saveLink(link, tagsList)">Save</button>
                         <button class="btn btn-default" data-dismiss="modal" ng-click="closeInfo()"><i class="fa fa-times"></i> Close</button>
                     </div>
                 </div>

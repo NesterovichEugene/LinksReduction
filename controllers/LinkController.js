@@ -33,6 +33,19 @@ app.post('/createLink', function(req, res, next){
     })
 });
 
+app.post('/updateLink', function(req, res, next){
+    var linkData = req.body;
+
+    Link.findOne({_id: linkData._id}, function(err, link){
+        if(err) console.log(err);
+        link.description = linkData.description;
+
+        link.save(function(err, link){
+            res.send('success');
+        })
+    });
+});
+
 app.get('/go', function(req, res){
     var link = 'http://localhost:3000'+req.url;
     Link.findOne({link: link}, function(err, link){
