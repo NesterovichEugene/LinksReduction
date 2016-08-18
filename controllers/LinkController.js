@@ -14,7 +14,7 @@ app.post('/createLink', function(req, res, next){
         follows: 0
     });
     link.save(function (err, link) {
-        if(err){
+        if(err && !err.code === 11000){
             console.error(err);
         }
         if(err && err.code === 11000) {
@@ -23,9 +23,6 @@ app.post('/createLink', function(req, res, next){
             field = field.substring(field.indexOf('"')+1, field.lastIndexOf('"')); // returns direct
             var duplicate_link = getLink(field);
             duplicate_link.exec(function (err, link) {
-                if(err){
-                    console.log(err);
-                }
                 res.json(link);
             })
 
@@ -76,10 +73,6 @@ app.get('/mylinkslist', function(req, res){
             res.json(data)
         }
     })
-});
-
-app.get('/linkInfo', function(req, res){
-
 });
 
 function getLink(direct){

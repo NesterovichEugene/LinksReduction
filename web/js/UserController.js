@@ -47,10 +47,13 @@ myApp.controller('UserController', ['$scope', '$http', function($scope, $http){
         $http.post('/createLink', $scope.link).success(function(response){
             $scope.responseLink = response;
         });
+        $http.post('/createTag', $scope.link).success(function(response){
+            console.log(response);
+        })
     };
 
-    $scope.followLink = function(){
-        window.open($scope.responseLink.link);
+    $scope.followLink = function(link){
+        window.open(link.link);
     };
 
     var refreshAll = function() {
@@ -67,6 +70,30 @@ myApp.controller('UserController', ['$scope', '$http', function($scope, $http){
 
     $scope.info = function(link){
         $scope.link = link;
+        $http.post('/getTags', $scope.link).success(function (response) {
+            $scope.tagsList = response;
+        });
     };
+
+    $scope.viewTag = function(tagName){
+        if(!$scope.edit){
+            $('#linksModal').modal('hide');
+            $http.post('/viewTag', {name: tagName}).success(function (response) {
+                $scope.linksList = response;
+            });
+        }
+    };
+
+    $scope.closeInfo = function(){
+        if($scope.edit){
+            $scope.edit = false;
+        }
+    };
+
+    $scope.editLink = function(){
+        if(!$scope.edit){
+            $scope.edit = true;
+        }
+    }
 
 }]);

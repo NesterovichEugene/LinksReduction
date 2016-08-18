@@ -7,20 +7,23 @@
                 <hr class="star-primary">
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-4 links-item" ng-repeat="link in linksList">
-            <a href="#linksModal" class="links-link" data-toggle="modal">
-                <div class="caption" ng-click="info(link)">
-                    <div class="caption-content">
-                        <i class="fa fa-search-plus fa-3x"></i>
+
+        <div class="row">
+            <div class="col-sm-4 links-item" ng-repeat="link in linksList">
+                <a href="#linksModal" class="links-link" data-toggle="modal">
+                    <div class="caption" ng-click="info(link)">
+                        <div class="caption-content">
+                            <i class="fa fa-search-plus fa-3x"></i>
+                        </div>
                     </div>
-                </div>
-                <h5>Link: </h5><label>{{link.link}}</label><br>
-                <h5>Direct: </h5><label style="word-wrap: break-word;">{{link.direct}}</label>
-            </a>
+                    <h5>Link: </h5><label>{{link.link}}</label><br>
+                    <h5>Direct: </h5><label style="word-wrap: break-word;">{{link.direct}}</label>
+                </a>
+            </div>
         </div>
+
     </div>
+
 </section>
 
 <!-- links Modals -->
@@ -38,24 +41,31 @@
                     <div class="modal-body">
                         <h2>Link Info</h2>
                         <hr class="star-primary">
+                        <h3>Link</h3>
                         <p>{{link.link}}</p>
+                        <h3>Direct</h3>
                         <p>{{link.direct}}</p>
+                        <h3>Description</h3>
                         <p>{{link.description}}</p>
-                        <p>Follows: {{link.follows}}</p>
+                        <h3>Follows: {{link.follows}}</h3>
                         <ul class="list-inline item-details">
                             <li>Tags: </li>
                             <li>
-                                <input type="text" disabled>
+                                <a ng-click="viewTag(tagsList[0].name)" ng-if="!edit">{{tagsList[0].name}}</a>
+                                <input type="text" ng-model="tagsList[0].name" ng-if="edit">
                             </li>
                             <li>
-                                <input type="text" disabled>
+                                <a ng-click="viewTag(tagsList[1].name)" ng-if="!edit">{{tagsList[1].name}}</a>
+                                <input type="text" ng-model="tagsList[1].name" ng-if="edit">
                             </li>
                             <li>
-                                <input type="text" disabled>
+                                <a ng-click="viewTag(tagsList[2].name)" ng-if="!edit">{{tagsList[2].name}}</a>
+                                <input type="text" ng-model="tagsList[2].name" ng-if="edit">
                             </li>
                         </ul>
-                        <button class="btn btn-info" ng-if="link.created_by == user._id" ng-click="edit = true">Edit</button>
-                        <button class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        <button class="btn btn-primary" ng-click="followLink(link)">Follow link</button>
+                        <button class="btn btn-success" ng-if="link.created_by == user._id" ng-click="editLink()">Edit</button>
+                        <button class="btn btn-default" data-dismiss="modal" ng-click="closeInfo()"><i class="fa fa-times"></i> Close</button>
                     </div>
                 </div>
             </div>

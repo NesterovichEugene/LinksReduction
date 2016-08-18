@@ -42,10 +42,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#links">Links</a>
+                        <a href="#page-top" ng-click="changeTemplate('home')">Home</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about">About</a>
+                        <a href="#links" ng-click="refreshAll()">Links</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about" ng-click="changeTemplate('home')">About</a>
                     </li>
                     <li class="page-scroll">
                         <a style="cursor: pointer" data-toggle="modal" data-target="#loginModal">Log In</a>
@@ -106,44 +109,7 @@
         </div>
     </div>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <img class="img-responsive" src="img/scissors.png" alt="">
-                    <div class="intro-text">
-                        <span class="name">Links Reduction</span>
-                        <hr class="star-light">
-                        <span class="skills">Short Links - Tiny URLs - Everywhere</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
     <div ng-include="template"></div>
-
-    <!-- About Section -->
-    <section class="success" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>About</h2>
-                    <hr class="star-light">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-lg-offset-2">
-                    <p>Share your links across all your marketing channels-including email, SMS, display, social and more-and collect key insights into each channel’s performance and audience. </p>
-                </div>
-                <div class="col-lg-4">
-                    <p>Track individual link analytics, gather audience intelligence and measure campaign performance in one location.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
 
     <!--Angular-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>

@@ -1,0 +1,130 @@
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <img class="img-responsive" src="img/scissors.png" alt="">
+                <div class="intro-text">
+                    <span class="name">Links Reduction</span>
+                    <hr class="star-light">
+                    <span class="skills">Short Links - Tiny URLs - Everywhere</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="links">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Links</h2>
+                <hr class="star-primary">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 links-item" ng-model="linksList[linksList.length-1]" ng-if="linksList[linksList.length-1]">
+                <a href="#linksModal" class="links-link" data-toggle="modal">
+                    <div class="caption" ng-click="info(linksList[linksList.length-1])">
+                        <div class="caption-content">
+                            <i class="fa fa-search-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <h5>Link: </h5><label>{{linksList[linksList.length-1].link}}</label><br>
+                    <h5>Direct: </h5><label style="word-wrap: break-word;">{{linksList[linksList.length-1].direct}}</label>
+                </a>
+            </div>
+            <div class="col-md-4 links-item" ng-model="linksList[linksList.length-2]" ng-if="linksList[linksList.length-2]">
+                <a href="#linksModal" class="links-link" data-toggle="modal">
+                    <div class="caption" ng-click="info(linksList[linksList.length-2])">
+                        <div class="caption-content">
+                            <i class="fa fa-search-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <h5>Link: </h5><label>{{linksList[linksList.length-2].link}}</label><br>
+                    <h5>Direct: </h5><label style="word-wrap: break-word;">{{linksList[linksList.length-2].direct}}</label>
+                </a>
+            </div>
+            <div class="col-md-4 links-item" ng-model="linksList[linksList.length-3]" ng-if="linksList[linksList.length-3]">
+                <a href="#linksModal" class="links-link" data-toggle="modal">
+                    <div class="caption" ng-click="info(linksList[linksList.length-3])">
+                        <div class="caption-content">
+                            <i class="fa fa-search-plus fa-3x"></i>
+                        </div>
+                    </div>
+                    <h5>Link: </h5><label>{{linksList[linksList.length-3].link}}</label><br>
+                    <h5>Direct: </h5><label style="word-wrap: break-word;">{{linksList[linksList.length-3].direct}}</label>
+                </a>
+            </div>
+        </div>
+        <h2 class="text-center">
+            <a class="more-btn" ng-click="changeTemplate('links')">More</a>
+        </h2>
+
+    </div>
+
+</section>
+
+<!-- links Modals -->
+<div class="links-modal modal fade" id="linksModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-content">
+        <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+                <div class="rl">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <div class="modal-body">
+                        <h2>Link Info</h2>
+                        <hr class="star-primary">
+                        <h3>Link</h3>
+                        <p>{{link.link}}</p>
+                        <h3>Direct</h3>
+                        <p>{{link.direct}}</p>
+                        <h3>Description</h3>
+                        <p>{{link.description}}</p>
+                        <h3>Follows: {{link.follows}}</h3>
+                        <ul class="list-inline item-details">
+                            <li>Tags: </li>
+                            <li>
+                                <a ng-click="viewTag(tagsList[0].name)">{{tagsList[0].name}}</a>
+                            </li>
+                            <li>
+                                <a ng-click="viewTag(tagsList[1].name)">{{tagsList[1].name}}</a>
+                            </li>
+                            <li>
+                                <a ng-click="viewTag(tagsList[2].name)">{{tagsList[2].name}}</a>
+                            </li>
+                        </ul>
+                        <button class="btn btn-primary" ng-click="followLink(link)">Follow link</button>
+                        <button class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About Section -->
+<section class="success" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>About</h2>
+                <hr class="star-light">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-2">
+                <p>Share your links across all your marketing channels-including email, SMS, display, social and more-and collect key insights into each channel’s performance and audience. </p>
+            </div>
+            <div class="col-lg-4">
+                <p>Track individual link analytics, gather audience intelligence and measure campaign performance in one location.</p>
+            </div>
+        </div>
+    </div>
+</section>

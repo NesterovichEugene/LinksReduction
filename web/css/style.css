@@ -198,20 +198,36 @@ section.success {
   }
 }
 #links{
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     overflow: auto;
 }
 
-#links .links-item {
-  margin: 0 0 15px;
-  right: 0;
+#links .more-btn{
+    color: #2C3E50;
+    padding: 3px 10px;
+    border: 4px dashed #2C3E50;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
 }
+
+#links .more-btn:hover{
+    color: #18BC9C;
+    border: 4px dashed #18BC9C;
+}
+
+
+#links .links-item {
+    margin: 0 0 10px;
+    right: 0;
+}
+
 #links .links-item .links-link {
   display: block;
     min-height: 165px;
 text-decoration: none;
-    border: 2px dashed black;
+    border: 2px solid #2C3E50;
     border-radius: 3px;
   position: relative;
   max-width: 400px;
@@ -252,11 +268,16 @@ text-decoration: none;
   z-index: 2;
 }
 
+#links h5{
+    color: #2C3E50;
+}
+
 .item-details input{
     border: none;
-    width: 80px;
+    width: 120px;
     border-bottom: solid 1px #c9c9c9;
     transition: border 0.3s;
+    text-align: center;
 }
 
 .item-details input:disabled{
@@ -481,6 +502,15 @@ fieldset[disabled] .btn-success.active {
   padding: 100px 0;
   text-align: center;
 }
+
+.links-modal a{
+    cursor: pointer;
+}
+
+.links-modal p{
+    color: #18BC9C;
+}
+
 .links-modal .modal-content h2 {
   margin: 0;
   font-size: 3em;
@@ -583,6 +613,7 @@ fieldset[disabled] .btn-success.active {
     margin: 3px 10px 0;
     font-weight: 700;
     font-size: 16px;
+    text-align: center;
 }
 
 #reduce .tag:focus,
