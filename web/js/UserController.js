@@ -54,6 +54,13 @@ myApp.controller('UserController', ['$scope', '$http', function($scope, $http){
         window.open(link.link);
     };
 
+    $scope.clearAll = function(){
+        $('input').val('');
+        $('textarea').val('');
+        $scope.responseLink = null;
+
+    };
+
     var refreshAll = function() {
         $http.get('/linkslist').success(function (response) {
             $scope.linksList = response;

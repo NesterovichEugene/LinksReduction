@@ -14,10 +14,12 @@ app.post('/signup', function(req, res, next){
     user.save(function (err, user) {
         if(err) {
             console.error(err);
-            res.json('dublicate name')
+            res.send('dublicate')
         }
-        req.session.user = {id: user._id};
-        res.json('user created');
+        else {
+            req.session.user = {id: user._id};
+            res.json('user created');
+        }
     })
 });
 
@@ -32,12 +34,14 @@ app.post('/login', function(req, res, next) {
 
     var userData = req.body;
     User.findOne({username: userData.name}, function(err, user){
-        if(err) return console.error(err);
-        if ( user.password == hash(userData.password) ){
+        if(user === null){
+            res.send('not found');
+        }
+        else if ( user.password == hash(userData.password) ){
             req.session.user = {id: user._id};
             res.redirect('/user');
         } else {
-            console.log('Pass wrong');
+            res.send('wrong pass');
         }
     })
 });

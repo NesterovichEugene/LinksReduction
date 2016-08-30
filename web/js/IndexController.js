@@ -27,14 +27,30 @@ myApp.controller('IndexController', ['$scope', '$http', function($scope, $http){
     };
 
     $scope.login = function(){
-        $http.post('/login', $scope.user).success(function(response){
-            location.reload();
+        $http.post('/login', $scope.signin).success(function(response){
+            if(response === 'not found') {
+                $('.modal-body').append('<p style="color: red; text-align: center; font-size: 13px">Not found user with this name</p>');
+                $('.modal-body').find('p').fadeOut(3000);
+            }
+            else if(response === 'wrong pass'){
+                $('.modal-body').append('<p style="color: red; text-align: center; font-size: 13px">Wrong password</p>');
+                $('.modal-body').find('p').fadeOut(3000);
+            }
+            else{
+                location.reload();
+            }
         })
     };
 
     $scope.createUser = function(){
-        $http.post('/signup', $scope.user).success(function(response){
-            location.reload();
+        $http.post('/signup', $scope.signup).success(function(response){
+            if(response === 'dublicate'){
+                $('.modal-body').append('<p style="color: red; text-align: center; font-size: 13px">User with this name already exists</p>');
+                $('.modal-body').find('p').fadeOut(3000);
+            }
+            else{
+                location.reload();
+            }
         });
     };
 

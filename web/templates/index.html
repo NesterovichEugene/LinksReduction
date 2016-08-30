@@ -23,44 +23,51 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-4 links-item" ng-model="linksList[linksList.length-1]" ng-if="linksList[linksList.length-1]">
-                <a href="#linksModal" class="links-link" data-toggle="modal">
-                    <div class="caption" ng-click="info(linksList[linksList.length-1])">
-                        <div class="caption-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
+        <div  ng-if="linksList.length > 0">
+            <div class="row">
+                <div class="col-md-4 links-item" ng-model="linksList[linksList.length-1]" ng-if="linksList[linksList.length-1]">
+                    <a href="#linksModal" class="links-link" data-toggle="modal">
+                        <div class="caption" ng-click="info(linksList[linksList.length-1])">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
                         </div>
-                    </div>
-                    <h5>Link: </h5><label>{{linksList[linksList.length-1].link}}</label><br>
-                    <h5>Direct: </h5><label style="word-wrap: break-word;">{{linksList[linksList.length-1].direct}}</label>
-                </a>
-            </div>
-            <div class="col-md-4 links-item" ng-model="linksList[linksList.length-2]" ng-if="linksList[linksList.length-2]">
-                <a href="#linksModal" class="links-link" data-toggle="modal">
-                    <div class="caption" ng-click="info(linksList[linksList.length-2])">
-                        <div class="caption-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
+                        <h5>Link: </h5><label>{{linksList[linksList.length-1].link}}</label><br>
+                        <h5>Direct: </h5><label style="word-wrap: break-word;">{{linksList[linksList.length-1].direct}}</label>
+                    </a>
+                </div>
+                <div class="col-md-4 links-item" ng-model="linksList[linksList.length-2]" ng-if="linksList[linksList.length-2]">
+                    <a href="#linksModal" class="links-link" data-toggle="modal">
+                        <div class="caption" ng-click="info(linksList[linksList.length-2])">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
                         </div>
-                    </div>
-                    <h5>Link: </h5><label>{{linksList[linksList.length-2].link}}</label><br>
-                    <h5>Direct: </h5><label style="word-wrap: break-word;">{{linksList[linksList.length-2].direct}}</label>
-                </a>
-            </div>
-            <div class="col-md-4 links-item" ng-model="linksList[linksList.length-3]" ng-if="linksList[linksList.length-3]">
-                <a href="#linksModal" class="links-link" data-toggle="modal">
-                    <div class="caption" ng-click="info(linksList[linksList.length-3])">
-                        <div class="caption-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
+                        <h5>Link: </h5><label>{{linksList[linksList.length-2].link}}</label><br>
+                        <h5>Direct: </h5><label style="word-wrap: break-word;">{{linksList[linksList.length-2].direct}}</label>
+                    </a>
+                </div>
+                <div class="col-md-4 links-item" ng-model="linksList[linksList.length-3]" ng-if="linksList[linksList.length-3]">
+                    <a href="#linksModal" class="links-link" data-toggle="modal">
+                        <div class="caption" ng-click="info(linksList[linksList.length-3])">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
                         </div>
-                    </div>
-                    <h5>Link: </h5><label>{{linksList[linksList.length-3].link}}</label><br>
-                    <h5>Direct: </h5><label style="word-wrap: break-word;">{{linksList[linksList.length-3].direct}}</label>
-                </a>
+                        <h5>Link: </h5><label>{{linksList[linksList.length-3].link}}</label><br>
+                        <h5>Direct: </h5><label style="word-wrap: break-word;">{{linksList[linksList.length-3].direct}}</label>
+                    </a>
+                </div>
             </div>
+            <h2 class="text-center">
+                <a class="more-btn" ng-click="changeTemplate('links')">More</a>
+            </h2>
         </div>
-        <h2 class="text-center">
-            <a class="more-btn" ng-click="changeTemplate('links')">More</a>
-        </h2>
+
+        <div ng-if="linksList.length == 0">
+            <h2 style="text-align: center">Sorry, there are no links yet</h2>
+            <h3 style="text-align: center">You can log in to create links</h3>
+        </div>
 
     </div>
 
