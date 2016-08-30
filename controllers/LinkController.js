@@ -41,7 +41,7 @@ app.post('/updateLink', function(req, res, next){
         link.description = linkData.description;
 
         link.save(function(err, link){
-            res.send('success');
+            res.send(link);
         })
     });
 });
