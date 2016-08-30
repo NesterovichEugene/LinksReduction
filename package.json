@@ -1,13 +1,23 @@
 {
-  "name": "links_reduction",
+  "name": "links-reduction",
   "version": "1.0.0",
-  "description": "links reduction",
+  "description": "use <b>npm install</b><br> server will be available on <b>localhost:3000</b>",
   "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
   "dependencies": {
     "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "connect-mongo": "^1.2.1",
+    "cookie-parser": "^1.4.3",
+    "crypto": "^0.0.3",
     "express": "^4.14.0",
-    "html": "0.0.10",
-    "mongojs": "^2.4.0"
+    "express-session": "^1.14.0",
+    "fs": "^0.0.2",
+    "mongojs": "^2.4.0",
+    "mongoose": "^4.5.5"
   },
   "devDependencies": {},
   "scripts": {
@@ -18,7 +28,7 @@
     "type": "git",
     "url": "git+https://github.com/NesterovichEugene/LinksReduction.git"
   },
-  "author": "Nesterovich Eugene",
+  "author": "Eugene",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/NesterovichEugene/LinksReduction/issues"
